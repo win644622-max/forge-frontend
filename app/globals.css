@@ -1,0 +1,346 @@
+@import "tailwindcss";
+
+/* ============================================
+   FORGE DESIGN SYSTEM — Industrial Dark
+   Matched to holstonforge.com
+   ============================================ */
+
+:root {
+  --forge-orange: #FF4D00;
+  --forge-amber: #FF9500;
+  --forge-glow: rgba(255, 77, 0, 0.15);
+  --steel: #1A1A1A;
+  --iron: #111111;
+  --ash: #2A2A2A;
+  --smoke: #3D3D3D;
+  --fog: #888888;
+  --light: #F0EDE8;
+  --white: #FAFAF8;
+  --radius: 4px;
+  --radius-sm: 2px;
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 8px 32px rgba(255, 77, 0, 0.15);
+}
+
+@theme inline {
+  --color-forge-orange: var(--forge-orange);
+  --color-forge-amber: var(--forge-amber);
+  --color-steel: var(--steel);
+  --color-iron: var(--iron);
+  --color-ash: var(--ash);
+  --color-smoke: var(--smoke);
+  --color-fog: var(--fog);
+  --color-light: var(--light);
+  --color-white: var(--white);
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--iron);
+  color: var(--light);
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================
+   NOISE OVERLAY — applied via ::after on body
+   ============================================ */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+
+::selection {
+  background: var(--forge-orange);
+  color: var(--iron);
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--iron);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--smoke);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--forge-orange);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+.font-display {
+  font-family: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.font-mono {
+  font-family: "DM Mono", ui-monospace, SFMono-Regular, "DejaVu Sans Mono",
+    Menlo, Consolas, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.font-body {
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+/* Display sizes — Bebas Neue */
+.text-hero {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(64px, 12vw, 160px);
+  line-height: 0.9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-display {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-heading {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.text-subheading {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Body sizes — DM Sans */
+.text-body {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.text-body-sm {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Mono sizes — DM Mono */
+.text-mono {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.text-mono-lg {
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   GRID BACKGROUND
+   ============================================ */
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-grid-fade {
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+}
+
+/* ============================================
+   SUBTLE RADIAL GLOW
+   ============================================ */
+
+.bg-glow-orange {
+  background-image: radial-gradient(
+    ellipse 50% 40% at 50% 50%,
+    rgba(255, 77, 0, 0.06) 0%,
+    transparent 100%
+  );
+}
+
+/* ============================================
+   FOCUS
+   ============================================ */
+
+*:focus-visible {
+  outline: 1px solid var(--forge-orange);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   INPUTS — Industrial style
+   ============================================ */
+
+.forge-input {
+  background: var(--ash);
+  border: 1px solid var(--smoke);
+  color: var(--light);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.forge-input::placeholder {
+  color: var(--fog);
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.forge-input:focus {
+  outline: none;
+  border-color: var(--forge-orange);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.forge-btn-primary {
+  background: var(--forge-orange);
+  color: var(--iron);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.forge-btn-primary:hover {
+  background: var(--forge-amber);
+  box-shadow: 0 4px 24px rgba(255, 77, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.forge-btn-secondary {
+  background: transparent;
+  color: var(--light);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border: 1px solid var(--smoke);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.forge-btn-secondary:hover {
+  border-color: var(--fog);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   CARDS — sharp edges, bottom hover line
+   ============================================ */
+
+.forge-card {
+  background: var(--steel);
+  border: 1px solid var(--ash);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.forge-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--forge-orange), var(--forge-amber));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.forge-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255, 77, 0, 0.1);
+}
+
+.forge-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============================================
+   DIVIDERS
+   ============================================ */
+
+.forge-divider {
+  height: 1px;
+  background: var(--ash);
+  border: none;
+}
